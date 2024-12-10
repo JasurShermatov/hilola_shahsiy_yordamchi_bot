@@ -20,14 +20,8 @@ async def admin_start(event: Union[Message, CallbackQuery], state: FSMContext):
     admin_text = text("admin_start").format(fullname=fullname)
 
     if isinstance(event, CallbackQuery):
-        await event.message.edit_text(
-            text=admin_text,
-            reply_markup=admin_main_menu
-        )
+        await event.message.edit_text(text=admin_text, reply_markup=admin_main_menu)
     else:
-        await event.answer(
-            text=admin_text,
-            reply_markup=admin_main_menu
-        )
+        await event.answer(text=admin_text, reply_markup=admin_main_menu)
 
     await state.clear()

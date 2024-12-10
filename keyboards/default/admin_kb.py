@@ -3,13 +3,8 @@ from aiogram.types import ReplyKeyboardMarkup, KeyboardButton
 
 admin_keyboard = ReplyKeyboardMarkup(
     keyboard=[
-        [
-            KeyboardButton(text="📊 Statistika"),
-            KeyboardButton(text="📥 Users Excel")
-        ],
-        [
-            KeyboardButton(text="⬅️ Orqaga")
-        ]
+        [KeyboardButton(text="📊 Statistika"), KeyboardButton(text="📥 Users Excel")],
+        [KeyboardButton(text="⬅️ Orqaga")],
     ],
-    resize_keyboard=True
+    resize_keyboard=True,
 )

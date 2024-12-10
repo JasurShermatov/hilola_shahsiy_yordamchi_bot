@@ -35,7 +35,7 @@ async def process_broadcast(message: Message, state: FSMContext):
 
     for user in users:
         try:
-            await message.copy_to(user['user_id'])
+            await message.copy_to(user["user_id"])
             count += 1
         except Exception as e:
             errors += 1
@@ -46,8 +46,6 @@ async def process_broadcast(message: Message, state: FSMContext):
             await message.answer(f"Yuborildi: {count} ta\nXato: {errors} ta")
 
     await message.answer(
-        f"Xabar yuborish yakunlandi.\n"
-        f"Yuborildi: {count} ta\n"
-        f"Xato: {errors} ta"
+        f"Xabar yuborish yakunlandi.\n" f"Yuborildi: {count} ta\n" f"Xato: {errors} ta"
     )
     await state.clear()

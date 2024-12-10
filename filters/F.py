@@ -10,9 +10,11 @@ config = load_config()
 # ADMIN_IDS dan foydalanishni to'g'rilaymiz
 ADMINS = config.bot.admin_ids
 
+
 @dataclass
 class F:
     """Field accessor object"""
+
     path: str
 
     def resolve(self, data: Dict[str, Any]) -> Any:

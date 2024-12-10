@@ -1,6 +1,3 @@
-# utils/database/functions/users.py
-
-# Jadval yaratish
 CREATE_USERS_TABLE = """
 CREATE TABLE IF NOT EXISTS users (
     user_id BIGINT PRIMARY KEY,
@@ -14,6 +11,7 @@ CREATE TABLE IF NOT EXISTS users (
 );
 """
 
+
 # Asosiy metodlar
 async def create_tables(self):
     """Database jadvallarini yaratish"""
@@ -22,7 +20,14 @@ async def create_tables(self):
     except Exception as e:
         print(f"Error creating tables: {e}")
 
-async def add_user(self, user_id: int, username: str = None, full_name: str = None, referrer_id: int = None):
+
+async def add_user(
+    self,
+    user_id: int,
+    username: str = None,
+    full_name: str = None,
+    referrer_id: int = None,
+):
     """Yangi foydalanuvchi qo'shish"""
     try:
         sql = """
@@ -38,6 +43,7 @@ async def add_user(self, user_id: int, username: str = None, full_name: str = No
         print(f"Error adding user: {e}")
         return None
 
+
 async def get_user(self, user_id: int):
     """Foydalanuvchi ma'lumotlarini olish"""
     try:
@@ -47,6 +53,7 @@ async def get_user(self, user_id: int):
     except Exception as e:
         print(f"Error getting user: {e}")
         return None
+
 
 async def get_all_users(self):
     """Barcha foydalanuvchilarni olish"""
@@ -58,6 +65,7 @@ async def get_all_users(self):
         print(f"Error getting all users: {e}")
         return []
 
+
 async def get_users_count(self) -> int:
     """Jami foydalanuvchilar soni"""
     try:
@@ -66,6 +74,7 @@ async def get_users_count(self) -> int:
     except Exception as e:
         print(f"Error counting users: {e}")
         return 0
+
 
 async def get_today_users_count(self) -> int:
     """Bugun qo'shilgan foydalanuvchilar soni"""
@@ -79,6 +88,7 @@ async def get_today_users_count(self) -> int:
     except Exception as e:
         print(f"Error counting today's users: {e}")
         return 0
+
 
 async def get_top_referrers(self, limit: int = 5):
     """Top referrerlarni olish"""
@@ -96,6 +106,7 @@ async def get_top_referrers(self, limit: int = 5):
         print(f"Error getting top referrers: {e}")
         return []
 
+
 async def get_weekly_stats(self):
     """So'nggi 7 kunlik statistika"""
     try:
@@ -109,13 +120,11 @@ async def get_weekly_stats(self):
             ORDER BY date DESC
         """
         rows = await self.pool.fetch(query)
-        return {
-            row['date'].strftime('%Y-%m-%d'): row['count']
-            for row in rows
-        }
+        return {row["date"].strftime("%Y-%m-%d"): row["count"] for row in rows}
     except Exception as e:
         print(f"Error getting weekly stats: {e}")
         return {}
+
 
 async def get_active_referrers_count(self) -> int:
     """Faol referral beruvchilar soni"""

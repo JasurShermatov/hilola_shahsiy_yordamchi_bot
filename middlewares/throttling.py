@@ -9,10 +9,10 @@ class ThrottlingMiddleware(BaseMiddleware):
         self.cache = TTLCache(maxsize=10000, ttl=rate_limit)
 
     async def __call__(
-            self,
-            handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],
-            event: Message,
-            data: Dict[str, Any]
+        self,
+        handler: Callable[[Message, Dict[str, Any]], Awaitable[Any]],
+        event: Message,
+        data: Dict[str, Any],
     ) -> Any:
         user_id = event.from_user.id
 

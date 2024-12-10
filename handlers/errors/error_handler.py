@@ -5,7 +5,8 @@ from aiogram.exceptions import (
     TelegramBadRequest,
     TelegramAPIError,
     TelegramRetryAfter,
-    TelegramEntityTooLarge)
+    TelegramEntityTooLarge,
+)
 from aiogram.types import Update
 
 router = Router()
@@ -22,36 +23,36 @@ async def errors_handler(update: Update, exception: Exception) -> bool:
 
     if isinstance(exception, TelegramBadRequest):
         if "message is not modified" in str(exception):
-            logging.exception('Message is not modified')
+            logging.exception("Message is not modified")
             return True
         if "message can't be deleted" in str(exception):
-            logging.exception('Message cant be deleted')
+            logging.exception("Message cant be deleted")
             return True
         if "message to delete not found" in str(exception):
-            logging.exception('Message to delete not found')
+            logging.exception("Message to delete not found")
             return True
         if "message text is empty" in str(exception):
-            logging.exception('MessageTextIsEmpty')
+            logging.exception("MessageTextIsEmpty")
             return True
         if "can't demote chat creator" in str(exception):
             logging.exception("Can't demote chat creator")
             return True
 
     if isinstance(exception, TelegramUnauthorizedError):
-        logging.exception(f'Unauthorized: {exception}')
+        logging.exception(f"Unauthorized: {exception}")
         return True
 
     if isinstance(exception, TelegramRetryAfter):
-        logging.exception(f'RetryAfter: {exception} \nUpdate: {update}')
+        logging.exception(f"RetryAfter: {exception} \nUpdate: {update}")
         return True
 
     if isinstance(exception, TelegramEntityTooLarge):
-        logging.exception(f'CantParseEntities: {exception} \nUpdate: {update}')
+        logging.exception(f"CantParseEntities: {exception} \nUpdate: {update}")
         return True
 
     if isinstance(exception, TelegramAPIError):
-        logging.exception(f'TelegramAPIError: {exception} \nUpdate: {update}')
+        logging.exception(f"TelegramAPIError: {exception} \nUpdate: {update}")
         return True
 
-    logging.exception(f'Update: {update} \n{exception}')
+    logging.exception(f"Update: {update} \n{exception}")
     return True

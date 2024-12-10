@@ -23,9 +23,8 @@ async def admin_panel(message: Message):
         return
 
     await message.answer(
-        "👋 Admin panel:\n\n"
-        "🔍 Quyidagi funksiyalardan foydalanishingiz mumkin:",
-        reply_markup=admin_keyboard
+        "👋 Admin panel:\n\n" "🔍 Quyidagi funksiyalardan foydalanishingiz mumkin:",
+        reply_markup=admin_keyboard,
     )
 
 
@@ -48,14 +47,16 @@ async def show_statistics(message: Message):
             "📊 Bot statistikasi\n",
             f"👥 Jami foydalanuvchilar: {total_users:,} ta",
             f"📅 Bugun qo'shilganlar: {today_users} ta",
-            f"♻️ Referal berganlar: {active_refs} ta\n"
+            f"♻️ Referal berganlar: {active_refs} ta\n",
         ]
 
         # Top referallar qo'shish
         if top_refs:
             stats.append("🏆 TOP-10 Faol referallar:")
             for i, user in enumerate(top_refs, 1):
-                username = f"@{user['username']}" if user['username'] else user['full_name']
+                username = (
+                    f"@{user['username']}" if user["username"] else user["full_name"]
+                )
                 stats.append(f"{i}. {username}: {user['ref_count']} ta taklif")
             stats.append("")
 
@@ -63,7 +64,9 @@ async def show_statistics(message: Message):
         if weekly_stats:
             stats.append("📈 So'nggi 7 kunlik statistika:")
             for date, count in weekly_stats.items():
-                formatted_date = datetime.strptime(date, '%Y-%m-%d').strftime('%d.%m.%Y')
+                formatted_date = datetime.strptime(date, "%Y-%m-%d").strftime(
+                    "%d.%m.%Y"
+                )
                 stats.append(f"📅 {formatted_date}: +{count} ta")
 
         await message.answer("\n".join(stats))
@@ -71,6 +74,7 @@ async def show_statistics(message: Message):
     except Exception as e:
         print(f"Error showing statistics: {e}")
         await message.answer("❌ Statistikani olishda xatolik yuz berdi")
+
 
 # handlers/users/admin/admin.py
 import pandas as pd
@@ -97,9 +101,8 @@ async def admin_panel(message: Message):
         return
 
     await message.answer(
-        "👋 Admin panel:\n\n"
-        "🔍 Quyidagi funksiyalardan foydalanishingiz mumkin:",
-        reply_markup=admin_keyboard
+        "👋 Admin panel:\n\n" "🔍 Quyidagi funksiyalardan foydalanishingiz mumkin:",
+        reply_markup=admin_keyboard,
     )
 
 
@@ -122,14 +125,16 @@ async def show_statistics(message: Message):
             "📊 Bot statistikasi\n",
             f"👥 Jami foydalanuvchilar: {total_users:,} ta",
             f"📅 Bugun qo'shilganlar: {today_users} ta",
-            f"♻️ Referal berganlar: {active_refs} ta\n"
+            f"♻️ Referal berganlar: {active_refs} ta\n",
         ]
 
         # Top referallar qo'shish
         if top_refs:
             stats.append("🏆 TOP-10 Faol referallar:")
             for i, user in enumerate(top_refs, 1):
-                username = f"@{user['username']}" if user['username'] else user['full_name']
+                username = (
+                    f"@{user['username']}" if user["username"] else user["full_name"]
+                )
                 stats.append(f"{i}. {username}: {user['ref_count']} ta taklif")
             stats.append("")
 
@@ -137,7 +142,9 @@ async def show_statistics(message: Message):
         if weekly_stats:
             stats.append("📈 So'nggi 7 kunlik statistika:")
             for date, count in weekly_stats.items():
-                formatted_date = datetime.strptime(date, '%Y-%m-%d').strftime('%d.%m.%Y')
+                formatted_date = datetime.strptime(date, "%Y-%m-%d").strftime(
+                    "%d.%m.%Y"
+                )
                 stats.append(f"📅 {formatted_date}: +{count} ta")
 
         await message.answer("\n".join(stats))
@@ -162,19 +169,21 @@ async def get_users_excel(message: Message):
         df = pd.DataFrame(users)
 
         # Ustunlarni formatlash
-        if 'created_at' in df.columns:
-            df['created_at'] = pd.to_datetime(df['created_at']).dt.strftime('%d.%m.%Y %H:%M')
+        if "created_at" in df.columns:
+            df["created_at"] = pd.to_datetime(df["created_at"]).dt.strftime(
+                "%d.%m.%Y %H:%M"
+            )
 
         # Ustun nomlarini o'zbekchaga o'zgartirish
         columns_map = {
-            'user_id': 'Telegram ID',
-            'username': 'Username',
-            'full_name': 'To\'liq ismi',
-            'created_at': 'Ro\'yxatdan o\'tgan vaqti',
-            'referrer_id': 'Taklif qiluvchi ID',
-            'referrer_username': 'Taklif qiluvchi username',
-            'ref_count': 'Taklif qilganlar soni',
-            'is_active': 'Faol'
+            "user_id": "Telegram ID",
+            "username": "Username",
+            "full_name": "To'liq ismi",
+            "created_at": "Ro'yxatdan o'tgan vaqti",
+            "referrer_id": "Taklif qiluvchi ID",
+            "referrer_username": "Taklif qiluvchi username",
+            "ref_count": "Taklif qilganlar soni",
+            "is_active": "Faol",
         }
         df = df.rename(columns=columns_map)
 
@@ -183,17 +192,18 @@ async def get_users_excel(message: Message):
         filepath = f"data/files/{filename}"
 
         # Excel faylni yaratish
-        with pd.ExcelWriter(filepath, engine='openpyxl') as writer:
-            df.to_excel(writer, sheet_name='Foydalanuvchilar', index=False)
+        with pd.ExcelWriter(filepath, engine="openpyxl") as writer:
+            df.to_excel(writer, sheet_name="Foydalanuvchilar", index=False)
 
             # Ustun kengliklarini moslash
-            worksheet = writer.sheets['Foydalanuvchilar']
+            worksheet = writer.sheets["Foydalanuvchilar"]
             for idx, col in enumerate(df.columns):
-                max_length = max(
-                    df[col].astype(str).apply(len).max(),
-                    len(str(col))
-                ) + 2
-                worksheet.column_dimensions[worksheet.cell(1, idx + 1).column_letter].width = max_length
+                max_length = (
+                    max(df[col].astype(str).apply(len).max(), len(str(col))) + 2
+                )
+                worksheet.column_dimensions[
+                    worksheet.cell(1, idx + 1).column_letter
+                ].width = max_length
 
         # Faylni yuborish
         excel_file = FSInputFile(filepath)
@@ -203,7 +213,7 @@ async def get_users_excel(message: Message):
                 f"📊 Bot foydalanuvchilari ro'yxati:\n"
                 f"📅 Sana: {datetime.now().strftime('%d.%m.%Y %H:%M')}\n"
                 f"👥 Jami: {len(users):,} ta foydalanuvchi"
-            )
+            ),
         )
 
     except Exception as e:
@@ -213,15 +223,9 @@ async def get_users_excel(message: Message):
 
 @router.message(F.text == "⬅️ Orqaga", AdminFilter())
 async def back_to_main(message: Message):
-    await message.answer(
-        "Asosiy menyuga qaytdingiz",
-        reply_markup=main_keyboard
-    )
+    await message.answer("Asosiy menyuga qaytdingiz", reply_markup=main_keyboard)
 
 
 @router.message(F.text == "⬅️ Orqaga", AdminFilter())
 async def back_to_main(message: Message):
-    await message.answer(
-        "Asosiy menyuga qaytdingiz",
-        reply_markup=main_keyboard
-    )
+    await message.answer("Asosiy menyuga qaytdingiz", reply_markup=main_keyboard)

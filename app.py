@@ -1,4 +1,3 @@
-# app.py
 import asyncio
 import logging
 from aiogram import Bot, Dispatcher
@@ -15,10 +14,11 @@ from utils.database import db
 
 logger = logging.getLogger(__name__)
 
+
 async def main():
     logging.basicConfig(
         level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        format="%(asctime)s - %(name)s - %(levelname)s - %(message)s",
     )
 
     config = load_config()
@@ -30,21 +30,22 @@ async def main():
     dp.message.middleware(CheckSubscriptionMiddleware())
     dp.callback_query.middleware(CheckSubscriptionMiddleware())
     await init_db()
-    dp.include_router(admin_router)  # Admin router birinchi bo'lishi kerak
+    dp.include_router(admin_router)
     dp.include_router(start_router)
     dp.include_router(menu_router)
 
     try:
-        await db.create_pool()
+        await db.create_pool(config)
         await set_default_commands(bot)
-        print("Bot ishga tushdi...")  # Debug uchun
+        print("Bot ishga tushdi...")
         await dp.start_polling(bot)
     finally:
-        if hasattr(db, 'pool') and db.pool is not None:
+        if hasattr(db, "pool") and db.pool is not None:
             await db.pool.close()
         await bot.session.close()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     try:
         asyncio.run(main())
     except (KeyboardInterrupt, SystemExit):

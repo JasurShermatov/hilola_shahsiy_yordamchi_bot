@@ -9,15 +9,10 @@ channel_keyboard = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="✅ OBUNA BO'LISH",
-                url=f"https://t.me/{config.bot.channel_id.replace('@', '')}"  # .bot qo'shildi
+                url=f"https://t.me/{config.bot.channel_id.replace('@', '')}",  # .bot qo'shildi
             )
         ],
-        [
-            InlineKeyboardButton(
-                text="♻️ TEKSHIRISH",
-                callback_data="check_subscription"
-            )
-        ]
+        [InlineKeyboardButton(text="♻️ TEKSHIRISH", callback_data="check_subscription")],
     ]
 )
 
@@ -25,8 +20,7 @@ confirmation_keyboard = InlineKeyboardMarkup(
     inline_keyboard=[
         [
             InlineKeyboardButton(
-                text="Ha, xohlayman!",
-                callback_data="confirm_participation"
+                text="Ha, xohlayman!", callback_data="confirm_participation"
             )
         ]
     ]

@@ -41,7 +41,7 @@ Nima qilmoqchisiz?""",
  {new_channel_name} (ID: {new_channel_id})
 Nima qilmoqchisiz?""",
     "user_register_language": "🇺🇿 O'zingizga kerakli tilni tanlang:"
-                              "\n\n🇷🇺 Выберите язык, который вы хотите:",
+    "\n\n🇷🇺 Выберите язык, который вы хотите:",
     "user_subscribe_request": "Botni ishlatish uchun quyidagi kanalga obuna bo'lish talab qilinadi!",
     "user_please_wait": "Iltimos biroz kutib turing...",
     "user_start": """<b>🤝 Ассалому алайкум, medicals.uz га хуш келибсиз!
@@ -65,7 +65,7 @@ Nima qilmoqchisiz?""",
     "user_select_ball": "<b>Saralash uchun ballni kiriting:</b>",
     "user_select_year": "<b>O'quv yilini tanlang:</b>",
     "user_nodata": "<b>🤷🏻‍♂️ Bunday ma'lumot yo'q</b>",
-    "user_inline_query": "<b>Tezkor qidiruvdan foydalaning...</b>"
+    "user_inline_query": "<b>Tezkor qidiruvdan foydalaning...</b>",
 }
 
 _buttons = {

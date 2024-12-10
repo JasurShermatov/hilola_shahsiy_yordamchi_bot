@@ -11,7 +11,7 @@ START_TEXT = (
     "Hoziroq vebinar bo'ladigan kanalga qo'shiling, buning uchun «KANALGA O'TISH» tugmasini bosing\n"
     "👇🏻👇🏻👇🏻"
 )
-PHOTO_URL2="https://github.com/JasurShermatov/logo/blob/main/photo_2024-12-08_17-07-28.jpg?raw=true"
+PHOTO_URL2 = "https://github.com/JasurShermatov/logo/blob/main/photo_2024-12-08_17-07-28.jpg?raw=true"
 
 
 # Obuna tekshirilganda chiqadigan xabar
@@ -37,21 +37,20 @@ PHOTO_URL = "https://telegra.ph/file/a72f5f1ae304aefa9c606.jpg"
 
 # Tugmalar matni
 BUTTONS = {
-    'SUBSCRIBE': "✅ OBUNA BO'LISH",
-    'CHECK': "♻️ TEKSHIRISH",
-    'CONFIRM': "Ha, xohlayman!",
-    'GET_GIFT': "🎁 Sovg'ani olish"
+    "SUBSCRIBE": "✅ OBUNA BO'LISH",
+    "CHECK": "♻️ TEKSHIRISH",
+    "CONFIRM": "Ha, xohlayman!",
+    "GET_GIFT": "🎁 Sovg'ani olish",
 }
 
 # Admin panel xabarlari
 ADMIN_MESSAGES = {
-    'WELCOME': """
+    "WELCOME": """
 🔐 Admin panel
 
 «Hilola Yusupova» botining admin paneliga xush kelibsiz!
 Quyidagi bo'limlardan birini tanlang:""",
-
-    'STATS': """
+    "STATS": """
 📊 Bot statistikasi:
 
 👥 Jami foydalanuvchilar: {total_users} ta
@@ -61,10 +60,8 @@ Quyidagi bo'limlardan birini tanlang:""",
 💫 Oxirgi 24 soat:
 ├─ Yangi a'zolar: {new_today} ta
 └─ Faol referallar: {new_refs} ta""",
-
-    'EXPORT_STARTED': "📤 Excel fayl tayyorlanmoqda...",
-
-    'EXPORT_READY': """
+    "EXPORT_STARTED": "📤 Excel fayl tayyorlanmoqda...",
+    "EXPORT_READY": """
 📊 Foydalanuvchilar ro'yxati:
 
 Ushbu faylda quyidagi ma'lumotlar mavjud:
@@ -74,14 +71,11 @@ Ushbu faylda quyidagi ma'lumotlar mavjud:
 - Ro'yxatdan o'tgan sanasi
 - Taklif qilgan do'stlari soni
 - Aktivlik holati""",
-
-    'BROADCAST_START': """
+    "BROADCAST_START": """
 📢 Xabar yuborish
 
 Iltimos, tarqatmoqchi bo'lgan xabar matnini kiriting.
 Bekor qilish uchun /cancel buyrug'ini yuboring.""",
-
-    'BROADCAST_PROGRESS': "📨 Xabar yuborilmoqda...\n\nYuborildi: {sent}/{total}",
-
-    'BROADCAST_COMPLETE': "✅ Xabar yuborish yakunlandi\n\nYuborildi: {sent}/{total}"
+    "BROADCAST_PROGRESS": "📨 Xabar yuborilmoqda...\n\nYuborildi: {sent}/{total}",
+    "BROADCAST_COMPLETE": "✅ Xabar yuborish yakunlandi\n\nYuborildi: {sent}/{total}",
 }

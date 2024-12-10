@@ -6,10 +6,7 @@ from data.texts import button
 
 def create_admin_button(callback_data: str) -> InlineKeyboardButton:
     """Create a single admin button with text from button() function"""
-    return InlineKeyboardButton(
-        text=button(callback_data),
-        callback_data=callback_data
-    )
+    return InlineKeyboardButton(text=button(callback_data), callback_data=callback_data)
 
 
 def get_admin_main_menu() -> InlineKeyboardBuilder:
