@@ -4,9 +4,10 @@ from data.config import load_config
 config = load_config()
 
 
+
 async def init_db():
     conn = psycopg2.connect(
-        "dbname='postgres' user='postgres' host='localhost' password='postgres' port='5432'"
+        f"dbname='{config.db.user}' user='{config.db.user}' host='{config.db.host}' password='{config.db.password}' port='5432'"
     )
     cur = conn.cursor()
     try:
