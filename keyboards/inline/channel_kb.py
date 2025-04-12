@@ -9,7 +9,7 @@ channel_keyboard = InlineKeyboardMarkup(
         [
             InlineKeyboardButton(
                 text="✅ OBUNA BO'LISH",
-                url=f"https://t.me/{config.bot.channel_id.replace('@', '')}",  # .bot qo'shildi
+                url=config.bot.channel_url,  # .bot qo'shildi
             )
         ],
         [InlineKeyboardButton(text="♻️ TEKSHIRISH", callback_data="check_subscription")],
